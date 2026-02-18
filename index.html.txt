@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ramadan Sambusa Counter</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #111;
+            color: white;
+        }
+        .box {
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 5px;
+        }
+        h1 {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌙 Ramadan Sambusa Counter</h1>
+
+    <div class="box">
+        <h2>Total Sambusas Sold Today:</h2>
+        <h1 id="counter">0</h1>
+
+        <button onclick="increase()">+1 Sambusa</button>
+        <button onclick="decrease()">-1 Sambusa</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        let count = localStorage.getItem("sambusaCount") || 0;
+        document.getElementById("counter").innerText = count;
+
+        function increase() {
+            count++;
+            document.getElementById("counter").innerText = count;
+            localStorage.setItem("sambusaCount", count);
+        }
+
+        function decrease() {
+            if(count > 0){
+                count--;
+                document.getElementById("counter").innerText = count;
+                localStorage.setItem("sambusaCount", count);
+            }
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById("counter").innerText = count;
+            localStorage.setItem("sambusaCount", count);
+        }
+    </script>
+
+</body>
+</html>
